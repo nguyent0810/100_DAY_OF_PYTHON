@@ -5,12 +5,11 @@ from money_machine import MoneyMachine
 menu = Menu()
 coffee_maker = CoffeeMaker()
 money_machine = MoneyMachine()
-list_drink = menu.get_items()
 
 is_on = True
 
 while is_on:
-    choice = input(f"What would you like? ({list_drink})")
+    choice = input(f"What would you like? ({menu.get_items()})")
 
     if choice == "off":
         is_on = False
@@ -19,10 +18,10 @@ while is_on:
         money_machine.report()
     else:    
         choice_item = menu.find_drink(choice)
-        is_resources_sufficient = coffee_maker.is_resource_sufficient(choice_item)
-        if is_resources_sufficient:
+        if coffee_maker.is_resource_sufficient(choice_item):
+            if money_machine.make_payment(choice_item.cost):
+                coffee_maker.make_coffee(choice_item)
                 
-        else:
     
     
     

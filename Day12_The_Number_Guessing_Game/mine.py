@@ -25,7 +25,7 @@ while is_continue:
             print("Too low.")
             print("Guess again")
         else:
-            print("You got it. The answer was {number}.")
+            print(f"You got it. The answer was {number}.")
             is_continue = False
     else:
         is_continue = False
