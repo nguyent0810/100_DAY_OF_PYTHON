@@ -23,10 +23,7 @@ answer_state = (screen.textinput(title="Guess the State", prompt="What's another
 
 while len(correct_guesses) < 50:
     if answer_state == "Exit":
-        missing_states = []
-        for state in data.state.values:
-            if state not in correct_guesses:
-                missing_states.append(state)
+        missing_states = [state for state in data.state.values if state not in correct_guesses]
         learn_data = {
             "State To Learn": missing_states
         }
