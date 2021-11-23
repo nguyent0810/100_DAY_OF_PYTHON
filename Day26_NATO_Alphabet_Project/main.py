@@ -1,5 +1,5 @@
 import pandas
-student_dict = pandas.read_csv("D:/Udemy/100_DAYS_OF_PYTHON/100_DAY_OF_PYTHON/Day26_NATO_Alphabet_Project/nato_phonetic_alphabet.csv")
+student_dict = pandas.read_csv("nato_phonetic_alphabet.csv")
 student_data_frame = pandas.DataFrame(student_dict)
 
 
