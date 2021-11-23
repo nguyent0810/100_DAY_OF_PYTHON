@@ -10,7 +10,8 @@ user_name = input("Enter a word: ").upper()
 list_word = [item for item in user_name]
 
 #result = [code for (letter, code) in nato_alphabet_dict.items() if letter in list_word]
-result = [nato_alphabet_dict[item] for item in list_word if item in nato_alphabet_dict.keys()]
+#result = [nato_alphabet_dict[item] for item in list_word if item in nato_alphabet_dict.keys()]
+result = [nato_alphabet_dict[letter] for letter in user_name]
 print(result) 
 #TODO 2. Create a list of the phonetic code words from a word that the user inputs.
 
