@@ -1,4 +1,11 @@
-print('''
+from tkinter import *
+from tkinter.messagebox import *
+from tkinter import font
+import tkinter
+window = Tk()
+window.title("Treasure Island")
+window.config(pady=20, padx=20)
+logo = '''
 *******************************************************************************
           |                   |                  |                     |
  _________|________________.=""_;=.______________|_____________________|_______
@@ -19,24 +26,42 @@ ____/______/______/______/__"=._o--._   ;o|o;     _._;o;____/______/______/____
 ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
 /______/______/______/______/______/______/______/______/______/______/_____ /
 *******************************************************************************
-''')
-print("Welcome to Treasure Island.")
-print("Your mission is to find the treasure.")
+'''
+def press_red():
+    showinfo("Game Over", "You entered a burning house.")
+    window.destroy()
+def press_blue():
+    showinfo("Game Over", "You entered a room of beasts")
+    window.destroy()
+def press_green():
+    showinfo("You Win!!!", "You found the treasure")
+    window.destroy()
+def press_swim():
+    showinfo("Game Over", "You're killed by an anaconda.")
+    window.destroy()
+def press_wait():
+    question['text'] = "You arrive at the island unharmed. \nThere is a house with 3 doors. \nOne red, one yellow and one blue. \nWhich colour do you choose?"
+    btn_1.config(text="red", command=press_red, background="red")
+    btn_2.config(text="blue", command=press_blue, background="blue")
+    btn_3 = Button(window,text="green", command=press_green, font=("Courier"), background="green")
+    btn_3.grid(column=3, row=3)
 
-first_question = (input('You\'re at a cross road. Where do you want to go? Type "left" or "right" ')).lower()
-if first_question == "left":
-    second_question = (input("You come to a lake. There is an island in the middle of the lake. Type 'wait' to wait for a boat. Type 'swim' to swim across ")).lower()
-    if second_question == "wait":
-        third_question = (input("You arrive at the island unharmed. There is a house with 3 doors. One red, one yellow and one blue. Which colour do you choose? ")).lower()
-        if third_question == "blue":
-            print("You entered a room of beasts. Game Over.")
-        elif third_question == "red":
-            print("You entered a burning house. Game Over.")
-        elif third_question == "yellow":
-            print("You found the treasure. You Win!")
-        else:
-            print("You entered wrong hole. Game Over.")
-    else:
-        print("You're killed by an anaconda. Game Over.")    
-else: 
-    print("You're facing the poison snake. Game Over.")
+def press_left():
+    question['text'] = "You come to a lake. \nThere is an island in the middle of the lake. \nType 'wait' to wait for a boat. \nType 'swim' to swim across."
+    question.config(justify="left")
+    btn_1.config(text="swim", command=press_swim)
+    btn_2.config(text="wait", command=press_wait)
+def press_right():
+    showinfo("Game Over", "You're facing the poison snake.")
+    window.destroy()
+Label(window,text="Welcome to Treasure Island", font=("Courier", 24, "bold")).grid(column=0, row=0, columnspan=4)
+Label(window,text="Your mission is to find the treasure", font=("Courier", 18, "bold")).grid(column=0,row=1, columnspan=4)
+Label(window,text=logo,justify="left", font=("Courier")).grid(column=0, row=2, columnspan=4)
+question = Label(window, text="You're at a cross road. Where do you want to go?",font=("Courier"))
+question.grid(column=0, row=3)
+btn_1 = Button(window,text="Left", command=press_left, font=("Courier"))
+btn_1.grid(column=1, row=3)
+btn_2 = Button(window,text="Right", command=press_right, font=("Courier"))
+btn_2.grid(column=2, row=3)
+
+window.mainloop()
