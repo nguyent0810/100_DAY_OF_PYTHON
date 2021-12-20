@@ -1,0 +1,11 @@
+Come ti chiami
+gio
+carla
+sara
+tommaso
+
+Dove sei nato
+genova
+milano
+torino
+venezia
